@@ -39,6 +39,13 @@ if "graph_app" not in st.session_state:
 st.sidebar.header("📁 Upload Requirement File (.txt)")
 uploaded_file = st.sidebar.file_uploader("Upload your .txt file", type=["txt"])
 
+# Clear button in sidebar
+st.sidebar.header("🔄 Reset Chat")
+if st.sidebar.button("Clear Chat History"):
+    st.session_state.chat_history = []
+    st.success("Chat history cleared!")
+    st.rerun()
+
 # Create a directory for temporary files if it doesn't exist
 temp_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "temp_uploads")
 os.makedirs(temp_dir, exist_ok=True)
